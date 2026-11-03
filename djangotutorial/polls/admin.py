@@ -5,3 +5,7 @@ from .models import Question, Choice
 admin.site.register(Question)
 
 admin.site.register(Choice)
+
+
+class QuestionAdmin(admin.ModelAdmin):
+    pass
