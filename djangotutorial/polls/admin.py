@@ -9,3 +9,6 @@ admin.site.register(Choice)
 
 class QuestionAdmin(admin.ModelAdmin):
     pass
+
+class ChoiceAdmin(admin.ModelAdmin):
+    pass
