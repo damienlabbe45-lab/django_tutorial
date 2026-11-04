@@ -30,6 +30,9 @@ class DetailView(generic.DetailView):
 class ResultsView(DetailView):
     template_name = "polls/results.html"
 
+class FrequencyView(DetailView):
+    template_name = "polls/frequency.html"
+
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
