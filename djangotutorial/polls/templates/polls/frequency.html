@@ -4,8 +4,9 @@
 {% for choice in question.get_choices %}
     <li>
         <strong>{{ choice.0 }}</strong> : 
-        {{ choice.1 }} {%if choice.1 >1 } 
+        {{ choice.1 }} {%if choice.1 >1 %} 
     {% else %} vote
+    {% endif %}
         soit 
         <!-- Multiplié par 100 et formaté proprement avec le filtre floatformat -->
         {{ choice.2|floatformat:2 }} %
