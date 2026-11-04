@@ -16,6 +16,7 @@ class IndexView(generic.ListView):
 
 class AllView(IndexView):
     template_name = "polls/all.html"
+    
     def get_queryset(self):
         """Return all published questions."""
         return Question.objects.order_by("-pub_date")
