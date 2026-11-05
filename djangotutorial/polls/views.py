@@ -1,6 +1,6 @@
 from typing import Any
 
-from django.db.models import F
+from django.db.models import F, Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -73,6 +73,6 @@ class StatisticsView(generic.TemplateView):
 
         context['least_popular'] = Question.get_least_popular()
 
-        context["latest_question"] = Question.objects.order_by("-oub_date").first()
+        context["latest_question"] = Question.objects.order_by("-pub_date").first()
 
         return context
