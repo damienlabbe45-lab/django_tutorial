@@ -38,7 +38,7 @@ class Question(TextExcerptModel):
 
     def get_choices(self):
         total, choices = self.prepare_choices_context()
-        return [(c.choice_text, c.votes, c.votes / total) for c in choices]
+        return [(c.choice_text, c.votes, (c.votes / total) * 100) for c in choices]
 
 
     def get_max_choice(self):
