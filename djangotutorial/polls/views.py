@@ -1,3 +1,5 @@
+from typing import Any
+
 from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -55,3 +57,22 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+
+
+class StatisticsView(generic.TemplateView):
+    template_name = "polls/statistics.html"
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["total_polls"] = Question.objects.count()
+        context["total_choices"] = Choice.objects.count()
+        context["total_votes"] = Choice.objects.aggregate(Sum('votes'))['votes__sum'] or 0
+        context['avg_votes'] = context["total_votes"] / context["total_polls"] if context["total_polls"] > 0 else 0
+
+        context['most_popular'] = Question.get_most_popular()
+
+        context['least_popular'] = Question.get_least_popular()
+
+        context["latest_question"] = Question.objects.order_by("-oub_date").first()
+
+        return context
