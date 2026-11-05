@@ -74,7 +74,7 @@ class StatisticsView(generic.TemplateView):
 
         context['least_popular'] = Question.get_least_popular()
 
-        context["latest_question"] = Question.objects.order_by("-pub_date").first()
+        context["latest_question"] = Question.objects.order_by("-id").first()
 
         return context
 
@@ -102,4 +102,4 @@ def create_question(request):
             
             return HttpResponseRedirect(reverse("polls:index"))
             
-    return render(request, "polls/create.html")
+    return render(request, "polls/new_poll.html")
