@@ -46,6 +46,14 @@ class Question(TextExcerptModel):
         max_choice = max(choices, key=lambda c: c.votes / total)
         return (max_choice.choice_text, max_choice.votes / total)
 
+    @classmethod
+    def get_most_popular(cls):
+        return cls.objects.annotate(total_vote = Sum('choice__votes')).order_by('-total_votes').first()
+
+    @classmethod
+    def get_least_popular(cls):
+        return cls.objects.annotate(total_vote = Sum('choice__votes')).order_by('total_votes').first()
+
 
 class Choice(TextExcerptModel):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -55,3 +63,5 @@ class Choice(TextExcerptModel):
 
     def __str__(self):
         return self.text_excerpt(self.choice_text)
+
+
