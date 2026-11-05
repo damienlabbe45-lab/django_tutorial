@@ -22,6 +22,9 @@ class Question(TextExcerptModel):
     def __str__(self):
         return self.text_excerpt(self.question_text)
 
+    def __repr__(self): 
+        return "<Question: {}>".format(self.question_text) 
+
     def was_published_recently(self):
       #  return self.pub_date >= timezone.now() - datetime.timedelta(days=1) and self.pub_date <= timezone.now()
       return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
