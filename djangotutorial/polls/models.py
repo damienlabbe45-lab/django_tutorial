@@ -31,8 +31,8 @@ class Question(TextExcerptModel):
         return timezone.now() - self.pub_date
 
     def prepare_choices_context(self):
-        choices = self.choice_set.all()
-        resultat = self.choice_set.aggregate(total=Sum('votes'))
+        choices = Choice.objects.filter(question=self)
+        resultat = choices.aggregate(total=Sum('votes'))
         return (1 if resultat['total'] in [0, None] else resultat['total'], choices)
         
 
