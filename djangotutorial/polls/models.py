@@ -48,11 +48,11 @@ class Question(TextExcerptModel):
 
     @classmethod
     def get_most_popular(cls):
-        return cls.objects.annotate(total_vote = Sum('choice__votes')).order_by('-total_votes').first()
+        return cls.objects.annotate(total_votes = Sum('choice__votes')).order_by('-total_votes').first()
 
     @classmethod
     def get_least_popular(cls):
-        return cls.objects.annotate(total_vote = Sum('choice__votes')).order_by('total_votes').first()
+        return cls.objects.annotate(total_votes = Sum('choice__votes')).order_by('total_votes').first()
 
 
 class Choice(TextExcerptModel):
