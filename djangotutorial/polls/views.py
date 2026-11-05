@@ -4,6 +4,7 @@ from django.db.models import F, Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.utils import timezone
 from django.views import generic
 
 from .models import Choice, Question
@@ -76,3 +77,18 @@ class StatisticsView(generic.TemplateView):
         context["latest_question"] = Question.objects.order_by("-pub_date").first()
 
         return context
+
+
+def create_question(request):
+    if request.method == "POST":
+        question_text = request.POST.get("question_text")
+        if question_text:
+            # Insertion explicite en base de données
+            Question.objects.create(
+                question_text=question_text,
+                pub_date=timezone.now()
+            )
+            # Redirection vers l'accueil après succès
+            return HttpResponseRedirect(reverse("polls:index"))
+            
+    return render(request, "polls/create.html")
