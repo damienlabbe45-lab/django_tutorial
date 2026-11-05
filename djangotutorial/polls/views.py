@@ -83,12 +83,23 @@ def create_question(request):
     if request.method == "POST":
         question_text = request.POST.get("question_text")
         if question_text:
-            # Insertion explicite en base de données
-            Question.objects.create(
+            # 1. Création explicite de la question
+            question = Question.objects.create(
                 question_text=question_text,
                 pub_date=timezone.now()
             )
-            # Redirection vers l'accueil après succès
+            
+            # 2. Boucle explicite sur les 5 champs de choix potentiels
+            for i in range(1, 6):
+                choice_text = request.POST.get(f"choice{i}")
+                # Si le champ n'est pas vide (après nettoyage des espaces)
+                if choice_text and choice_text.strip():
+                    Choice.objects.create(
+                        question=question,
+                        choice_text=choice_text.strip(),
+                        votes=0
+                    )
+            
             return HttpResponseRedirect(reverse("polls:index"))
             
     return render(request, "polls/create.html")
