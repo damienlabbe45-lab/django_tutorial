@@ -1,9 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
 app_name = "polls"
 urlpatterns = [
+    path("__debug__/", include("debug_toolbar.urls")),
     path("new_poll/", views.create_question, name="create"),
     path("statistics/", views.StatisticsView.as_view(), name = "statistics"),
     path("<int:pk>/frequency/", views.FrequencyView.as_view(), name="frequency"),
