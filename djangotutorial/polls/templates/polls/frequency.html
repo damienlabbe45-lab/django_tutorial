@@ -1,4 +1,6 @@
-<h1>{{ question.question_text }}</h1>
+<body>
+
+    <h1>{{ question.question_text }}</h1>
 
 <ul>
 {% for choice in question.get_choices %}
@@ -16,3 +18,4 @@
 
 <br>
 <a href="{% url 'polls:all' %}">← Retour à la liste de tous les sondages</a>
+</body>
