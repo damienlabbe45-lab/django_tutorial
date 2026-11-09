@@ -2,6 +2,14 @@ li a {
     color: green;
 }
 
-body {
+.bandeau {
     background: white url("images/background.png") no-repeat;
+    height: 150px;           /* Indispensable pour qu'un header vide affiche l'image ! */
+    background-size: contain;
+}
+
+.bandeau-creation {
+    filter: hue-rotate(120deg)  brightness(1.67);
+    border-bottom: 45px solid #007bff;
+
 }
