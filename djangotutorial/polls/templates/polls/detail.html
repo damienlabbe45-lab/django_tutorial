@@ -1,4 +1,11 @@
-<body>
+{% extends "polls/base.html" %}
+{% block titre %}
+<h1>vote</h1>
+{% endblock %}
+
+
+{% block sondages %}
+
 
     <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
@@ -14,4 +21,4 @@
 </form>
 
 <a href="{% url 'polls:index' %}">← Retour à l'accueil</a>
-</body>
+{% endblock %}
