@@ -1,7 +1,9 @@
-<body>
-
+{% extends "polls/base.html" %}
+{% block titre %}
 <h1>Tout les sondages</h1>
+{% endblock %}
 
+{% block sondages %}
 {% if latest_question_list %}
 
 <ul>
@@ -22,4 +24,4 @@
 <br> <br>
 <a href = "{% url 'polls:index' %}"> Retour à l'accueil</a>
 
-</body>
+{% endblock %}
