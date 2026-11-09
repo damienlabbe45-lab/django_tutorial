@@ -1,5 +1,10 @@
-<body>
-    <h1>Statistiques des sondages</h1>
+{% extends "polls/base.html" %}
+{% block titre %}
+
+Statistiques des sondages
+{% endblock %}
+
+{% block sondages %}
 
 <ul>
     <li>Nombre total de sondages enregistrés : <strong>{{ total_polls }}</strong></li>
@@ -22,4 +27,4 @@
 
 <br>
 <a href="{% url 'polls:index' %}">← Retour à l'accueil</a>
-</body>
+{% endblock %}
