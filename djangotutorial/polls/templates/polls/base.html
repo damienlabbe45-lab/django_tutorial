@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-{% load static %}
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
 <html>
 
-<body>
-
-    <title>
+<head>
+<title>
         {% block titre %}
 apprendre à utiliser django
 {% endblock %}
     
 </title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+
+<body>
+
+    
 <header class="bandeau {% block header_class %}{% endblock %}">
     <!-- Rien de plus ici, tout est géré par le CSS -->
 </header>
