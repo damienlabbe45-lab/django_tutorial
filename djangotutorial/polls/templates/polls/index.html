@@ -1,9 +1,12 @@
-<body>
+{% extends "polls/base.html" %}
 
-    {% load static %}
+{% block titre %}
 
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+page d'accueil
+{% endblock %}
 
+
+{% block sondages %}
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
@@ -21,4 +24,4 @@
 
 <br><br><br><br><br>
 <a href="{% url 'polls:all' %}">← Voir tous les sondages</a>
-</body>
+{% endblock %}
