@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+    <title>
+        {% block titre %}
+apprendre à utiliser django
+{% endblock %}
+    
+</title>
+<header>
+{% block style %}
+        {% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+{% endblock style %}
+</header>
+
+<main>
+{% block sondages %}
+
+{% endblock %}
+</main>
+
+</body>
+</html>
