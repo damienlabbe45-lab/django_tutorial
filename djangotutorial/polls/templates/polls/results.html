@@ -1,6 +1,12 @@
-<body>
+{% extends "polls/base.html" %}
+{% block titre %}
 
-    <h1>{{ question.question_text }}</h1>
+    résultats temporaire {{ question.question_text }}
+{% endblock %}
+
+    {% block sondages %}
+
+    {{ question.question_text }}
 
 <ul>
 {% for choice in question.choice_set.all %}
@@ -12,4 +18,5 @@
 <br><br><br><br><br><br>
 
 <a href="{% url 'polls:index' %}">← Retour à l'accueil</a>
-</body>
+
+{% endblock %}
