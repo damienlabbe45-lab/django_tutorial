@@ -24,6 +24,24 @@ apprendre à utiliser django
 {% block sondages %}
 
 {% endblock %}
+<br>
+{% if request.user.is_authenticated %}
+{{request.user.username}} <br>
+
+<br>
+
+<form action="{% url 'polls:deconnection' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Se déconnecter</button>
+</form>
+
+{% else %}
+{% if "/connection/" not in request.path %}
+<a href="{% url 'polls:connection' %}">se connecter</a>
+
+{% endif %}
+
+{% endif %}
 </main>
 
 </body>
