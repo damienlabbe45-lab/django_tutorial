@@ -1,5 +1,6 @@
 from typing import Any
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import F, Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -86,7 +87,7 @@ class StatisticsView(generic.TemplateView):
 
         return context
 
-
+@login_required(login_url="/")
 def create_question(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
