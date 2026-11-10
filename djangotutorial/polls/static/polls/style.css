@@ -3,13 +3,39 @@ li a {
 }
 
 .bandeau {
-    background: white url("images/background.png") no-repeat;
-    height: 150px;           /* Indispensable pour qu'un header vide affiche l'image ! */
+    background: url("images/background.png") ;
+    height: 550px;           /* Indispensable pour qu'un header vide affiche l'image ! */
     background-size: contain;
 }
 
 .bandeau-creation {
-    filter: hue-rotate(120deg)  brightness(1.67);
-    border-bottom: 45px solid #007bff;
+    filter: hue-rotate(120deg) brightness(1.1);
+    border-bottom: 5px solid #007bff;
+    background-color: #f2f2f2;
+} /* <-- Bien fermer la classe du bandeau ici ! */
 
+/* Les formulaires sont dans <main>, on les place donc tout à fait indépendamment */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form textarea,
+form select {
+    background-color: #e9ecef; 
+    color: #333333;            
+    border: 1px solid #ced4da; 
+    padding: 8px;
+    border-radius: 4px;        
+}
+
+form button[type="submit"] {
+    background-color: #007bff; 
+    color: white;              
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3; 
 }
