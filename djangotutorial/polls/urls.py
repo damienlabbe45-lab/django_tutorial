@@ -1,9 +1,11 @@
 from django.urls import path
+from django.contrib.auth.views import LoginView
 
 from . import views
 
 app_name = "polls"
 urlpatterns = [
+    path("connection", LoginView.as_view(template_name = "polls/connection"), name = "connexion"),
     path("new_poll/", views.create_question, name="create"),
     path("statistics/", views.StatisticsView.as_view(), name = "statistics"),
     path("<int:pk>/frequency/", views.FrequencyView.as_view(), name="frequency"),
