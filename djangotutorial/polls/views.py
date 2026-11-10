@@ -98,3 +98,6 @@ def create_question(request):
         form = QuestionForm()
         
     return render(request, "polls/new_poll.html", {"form": form})
+
+
+
