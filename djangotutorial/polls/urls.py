@@ -5,7 +5,7 @@ from . import views
 
 app_name = "polls"
 urlpatterns = [
-    path("deconnection/", LogoutView.as_view(next_page="polls:index"), name="logout"),
+    path("deconnection/", LogoutView.as_view(next_page="polls:index"), name="deconnection"),
     path("connection/", LoginView.as_view(template_name = "polls/connection.html", next_page = "polls:index"), name = "connection"),
     path("new_poll/", views.create_question, name="create"),
     path("statistics/", views.StatisticsView.as_view(), name = "statistics"),
