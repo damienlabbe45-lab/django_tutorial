@@ -87,7 +87,7 @@ class StatisticsView(generic.TemplateView):
 
         return context
 
-@login_required(login_url="/")
+@login_required(login_url="/polls/connection")
 def create_question(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
