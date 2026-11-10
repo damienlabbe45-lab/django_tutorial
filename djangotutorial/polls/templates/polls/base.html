@@ -27,6 +27,8 @@ apprendre à utiliser django
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
+
+        {% endif %}
 {% block sondages %}
 
 {% endblock %}
