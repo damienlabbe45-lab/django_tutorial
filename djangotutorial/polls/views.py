@@ -1,9 +1,10 @@
 from typing import Any
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import F, Sum
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
@@ -93,7 +94,8 @@ def create_question(request):
         form = QuestionForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse("polls:index"))
+            messages.success(request, "Votre sondage a bien été créé avec succès !")
+            return redirect("polls:index")
     else:
         form = QuestionForm()
         
