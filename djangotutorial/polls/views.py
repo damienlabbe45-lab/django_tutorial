@@ -93,6 +93,7 @@ def create_question(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
+            form.instance.author = request.user
             form.save()
             messages.success(request, "Votre sondage a bien été créé avec succès !")
             return redirect("polls:index")
