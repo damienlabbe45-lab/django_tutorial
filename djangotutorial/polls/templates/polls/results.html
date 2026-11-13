@@ -6,11 +6,11 @@
 
     {% block sondages %}
 
-    {{ question.question_text }}
+    {{ question.question_text }}  {{question.author.username}}
 
 <ul>
 {% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }} </li>
 {% endfor %}
 </ul>
 

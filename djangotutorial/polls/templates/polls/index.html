@@ -10,7 +10,7 @@ page d'accueil
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}  {{ question.pub_date }}</a></li>
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}  {{ question.pub_date }} {{question.author.username}}</a></li>
     {% endfor %}
     </ul>
 {% else %}
