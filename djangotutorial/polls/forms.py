@@ -4,8 +4,8 @@ from .models import Question, Choice
 
 class QuestionForm(forms.ModelForm):
     # Champs optionnels pour les choix
-    choice1 = forms.CharField(label="Choix 1", required=False)
-    choice2 = forms.CharField(label="Choix 2", required=False)
+    choice1 = forms.CharField(label="Choix 1", required=True)
+    choice2 = forms.CharField(label="Choix 2", required=True)
     choice3 = forms.CharField(label="Choix 3", required=False)
     choice4 = forms.CharField(label="Choix 4", required=False)
     choice5 = forms.CharField(label="Choix 5", required=False)
