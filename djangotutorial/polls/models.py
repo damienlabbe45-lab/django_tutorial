@@ -3,7 +3,7 @@ import datetime
 from django.contrib import admin
 from django.db import models
 from django.utils import timezone
-from django.db.models import Sum
+from django.db.models import Sum, ForeignKey
 
 
 class TextExcerptModel(models.Model):
@@ -19,6 +19,7 @@ class TextExcerptModel(models.Model):
 class Question(TextExcerptModel):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
     @admin.display(boolean=True,
         ordering="pub_date",
